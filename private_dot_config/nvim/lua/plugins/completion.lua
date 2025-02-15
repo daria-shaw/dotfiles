@@ -4,6 +4,7 @@ return {
         { 'L3MON4D3/LuaSnip' },
         { 'saadparwaiz1/cmp_luasnip' },
         { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     },
     event = "InsertEnter",
     config = function()
@@ -17,9 +18,10 @@ return {
 
         cmp.setup({
             sources = {
-                { name = 'nvim_lsp', max_item_count = 8, keyword_length = 2 },
-                { name = 'buffer',   max_item_count = 2 },
+                { name = 'nvim_lsp',               max_item_count = 8, keyword_length = 2 },
+                { name = 'buffer',                 max_item_count = 2 },
                 { name = 'luasnip' },
+                { name = 'nvim_lsp_signature_help' },
             },
             mapping = {
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),
