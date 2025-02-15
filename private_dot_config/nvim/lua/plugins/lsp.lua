@@ -30,8 +30,15 @@ return {
                                 basedpyright = {
                                     analysis = {
                                         autoImportCompletions = true,
+                                        autoSearchPaths = true,
                                         diagnosticMode = "openFilesOnly",
                                         useLibraryCodeForTypes = true,
+                                        inlayHints = {
+                                            variableTypes = false,
+                                            callArgumentNames = false,
+                                            functionReturnTypes = true,
+                                            genericTypes = false,
+                                        },
                                         typeCheckingMode = "basic",     -- off, basic, strict, all
                                         diagnosticSeverityOverrides = { -- false, none, information, warning, error, true
                                             reportMissingTypeStubs = false,
@@ -44,20 +51,14 @@ return {
                                         }
                                     }
                                 }
-                            }
+                            },
+                            on_attach = function(client, bufnr)
+                                if client.server_capabilities.inlayHintProvider then
+                                    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+                                end
+                            end,
                         })
                     end,
-                    -- pyright = function()
-                    --     lspconfig.pyright.setup({
-                    --         capabilities = lsp_capabilities,
-                    --         settings = {
-                    --             pyright = {
-                    --                 -- eg disableOrganiseImport = true,
-                    --                 typeCheckingMode = "off",
-                    --             }
-                    --         }
-                    --     })
-                    -- end,
                     lua_ls = function()
                         lspconfig.lua_ls.setup({
                             settings = {
