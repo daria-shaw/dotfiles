@@ -50,3 +50,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
     end
 })
+
+require'lspconfig'.terraformls.setup{}
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})

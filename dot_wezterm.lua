@@ -13,7 +13,7 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Catppuccin Frappe"
 config.audible_bell = "Disabled"
 config.font = wezterm.font({
 	family = "JetBrains Mono",

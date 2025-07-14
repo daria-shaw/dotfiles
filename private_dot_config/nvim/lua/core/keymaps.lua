@@ -25,3 +25,4 @@ vim.keymap.set("v", "<leader>cc", ":norm ", { desc = "comment out code with i# o
 
 vim.keymap.set("n", "<leader>co", ":Bitbucket<CR>", { noremap = true, silent = true, desc = "Open file" })
 vim.keymap.set("v", "<leader>co", ":'<,'>Bitbucket<CR>", { noremap = true, silent = true, desc = "Open file" })
+
